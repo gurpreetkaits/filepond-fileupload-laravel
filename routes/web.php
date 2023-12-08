@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TemporaryFileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::controller(TemporaryFileController::class)->group(function(){
+    Route::match(['post','delete'],'temp/upload','index')->name('temporary.upload');
 });
